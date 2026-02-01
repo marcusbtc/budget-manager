@@ -13,6 +13,28 @@ A modern full-stack budget management application built with React, TypeScript, 
 - **Modern UI**: Smooth animations, toast notifications, responsive design
 - **Production Ready**: API timeouts, error handling, database transactions
 
+## Screenshots
+
+### Dashboard
+Overview of your finances with real-time statistics and interactive charts.
+
+![Dashboard](screenshots/dashboard.png)
+
+### Budget
+Manage entries with date filtering, sortable table, and inline editing.
+
+![Budget](screenshots/budget.png)
+
+### Entries
+Full entry management with category color-coding and quick actions.
+
+![Entries](screenshots/entries.png)
+
+### Analytics
+Detailed financial analysis with extended monthly trends and category breakdowns.
+
+![Analytics](screenshots/analytics.png)
+
 ## Tech Stack
 
 ### Frontend
