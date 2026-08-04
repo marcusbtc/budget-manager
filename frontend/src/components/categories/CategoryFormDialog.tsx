@@ -39,6 +39,8 @@ export function CategoryFormDialog({
 
   useEffect(() => {
     if (category) {
+      // Reset draft values whenever the selected record or dialog session changes.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setName(category.name)
       setColor(category.color)
     } else {
