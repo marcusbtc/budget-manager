@@ -1,6 +1,6 @@
 import type { BudgetEntry, BudgetEntryCreate, BudgetEntryUpdate, BudgetStats, Category, CategoryCreate, CategoryUpdate, CategoryStat, MonthlyTrend } from "@/types"
 
-const API_BASE = (import.meta as any).env?.VITE_API_URL || "http://localhost:8000/api/v1"
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000/api/v1"
 const REQUEST_TIMEOUT = 10000 // 10 seconds
 
 async function fetchWithTimeout(

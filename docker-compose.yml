@@ -1,0 +1,39 @@
+services:
+  backend:
+    image: ${BACKEND_IMAGE:-budget-manager-backend:local}
+    build:
+      context: ./backend
+    environment:
+      DATABASE_URL: sqlite:////data/budget.db
+      CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS:-http://localhost:8080}
+    volumes:
+      - budget-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  frontend:
+    image: ${FRONTEND_IMAGE:-budget-manager-frontend:local}
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: /api/v1
+    ports:
+      - '${APP_PORT:-8080}:8080'
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://127.0.0.1:8080/health']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  budget-data:

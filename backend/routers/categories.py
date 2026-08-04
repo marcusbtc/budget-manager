@@ -1,12 +1,13 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
 from typing import List
 
-from database import get_db, Category, BudgetEntry
+from database import Category, get_db
+from fastapi import APIRouter, Depends, HTTPException
 from schemas import (
-    CategoryCreate, CategoryUpdate, CategoryResponse,
-    BudgetEntryCreate, BudgetEntryUpdate, BudgetEntryResponse
+    CategoryCreate,
+    CategoryResponse,
+    CategoryUpdate,
 )
+from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/categories", tags=["categories"])
 
