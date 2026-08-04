@@ -214,6 +214,11 @@ Uses USD ($) format: `$1,234.56`
 
 SQLite database (`budget.db`) is created automatically on first run.
 
+For production containers, `docker compose up --build --wait` serves the app on
+port 8080 and stores SQLite in the persistent `budget-data` volume. Backup,
+restore, health verification, and image rollback gates are documented in
+[`docs/operations.md`](docs/operations.md).
+
 **Tables:**
 - `categories` - Budget categories with colors and icons
 - `budget_entries` - All budget transactions
@@ -240,5 +245,4 @@ This is a learning project. Feel free to extend it with:
 ## License
 
 MIT License
-
 

@@ -1,11 +1,11 @@
-from fastapi import APIRouter, Depends, Query
-from sqlalchemy.orm import Session
-from sqlalchemy import func
-from typing import List, Optional
 from datetime import datetime, timedelta
+from typing import List, Optional
 
-from database import get_db, BudgetEntry, Category
+from database import BudgetEntry, Category, get_db
+from fastapi import APIRouter, Depends, Query
 from schemas import BudgetStats, CategoryStat, MonthlyTrend
+from sqlalchemy import func
+from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/stats", tags=["stats"])
 
